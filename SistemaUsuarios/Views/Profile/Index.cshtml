@@ -150,7 +150,7 @@
             <div class="flex-grow-1">
               <h4 class="fw-bold text-dark mb-2" style="font-size: 1.25rem;">Su sesión está a punto de expirar</h4>
               <p class="text-secondary mb-0" style="font-size: 0.9rem;">
-                Por seguridad, su sesión expirará en <strong id="timerNumber" class="text-dark">49</strong> segundos. 
+                Por seguridad, su sesión expirará en <strong id="timerNumber" class="text-dark">10</strong> segundos. 
                 Para continuar, seleccione "Extender sesión".
               </p>
             </div>
@@ -171,17 +171,24 @@
 
 @section Scripts {
   <script>
-        // Configuración
         let secondsLeft = 10; 
         let countdownInterval;
-
-        setTimeout(() => {
-            const modalElement = document.getElementById('sessionModal');
-            const myModal = new bootstrap.Modal(modalElement);
-            myModal.show();
-
-            startCountdown();
-        }, 5000);
+        let warningTimeout; 
+        
+        function iniciarTemporizadorSesion() {
+            clearTimeout(warningTimeout);
+            
+            warningTimeout = setTimeout(() => {
+                const modalElement = document.getElementById('sessionModal');
+                const myModal = bootstrap.Modal.getOrCreateInstance(modalElement);
+ 
+                document.getElementById('timerNumber').innerText = secondsLeft;
+                
+                myModal.show();
+                startCountdown();
+            }, 5000); 
+        }
+        iniciarTemporizadorSesion();
 
         function startCountdown() {
             const timerDisplay = document.getElementById('timerNumber');
@@ -196,10 +203,12 @@
                 }
             }, 1000); 
         }
-
         document.getElementById('sessionModal').addEventListener('hidden.bs.modal', function () {
             clearInterval(countdownInterval);
+            
             secondsLeft = 10; 
+            
+            iniciarTemporizadorSesion();
         });
     </script>
 }
