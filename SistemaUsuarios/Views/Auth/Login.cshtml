@@ -1,0 +1,166 @@
+@model SistemaUsuarios.Models.ViewModels.LoginViewModel
+@{
+Layout = "_LayoutAuth";
+ViewData["Title"] = "Iniciar Sesión";
+ViewData["BackgroundImage"] = "/images/fondo2.webp";
+
+var isSessionExpired = ViewData["IsSessionExpired"] as bool? ?? false;
+}
+
+<style>
+  .btn-outline-custom {
+    color: #7f8c9f;
+    border-color: #dee2e6;
+    font-size: 0.9rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .btn-check:checked + .btn-outline-custom {
+    background-color: #747D86 !important;
+    border-color: #747D86 !important;
+    color: white !important;
+  }
+
+  .btn-ingresar {
+    background-color: #0156AC !important;
+    border-color: #0156AC !important;
+    color: white !important;
+  }
+
+  .btn-ingresar:hover, .btn-ingresar:focus, .btn-ingresar:active {
+    background-color: #004a94 !important;
+    border-color: #004a94 !important;
+    color: white !important;
+  }
+
+  .input-group:has(.input-validation-error) {
+    border: 1px solid #dc3545 !important;
+    border-radius: 0.375rem;
+  }
+
+  .input-group:has(.input-validation-error) .form-control,
+  .input-group:has(.input-validation-error) .input-group-text,
+  .input-group:has(.input-validation-error) .btn {
+    border: none !important;
+  }
+
+  .field-validation-error {
+    color: #b02a37;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+    font-weight: 400;
+  }
+
+  .field-validation-error::before {
+    content: "\f33a";
+    font-family: "bootstrap-icons" !important;
+    margin-right: 5px;
+    font-size: 0.85rem;
+    display: inline-block;
+  }
+
+  .form-control:focus {
+    box-shadow: none !important;
+    border-color: #dee2e6;
+  }
+</style>
+
+<div class="w-100 d-flex flex-column align-items-center">
+
+  <div class="card border-0 p-4 p-md-5 bg-white shadow-sm" style="max-width: 376px; width: 100%; border-radius: 0.8rem;">
+
+    <div class="d-flex justify-content-center mb-4">
+      <div class="btn-group w-100 shadow-sm" role="group">
+        <input type="radio" class="btn-check" name="docType" id="docDni" checked>
+        <label class="btn btn-outline-custom fw-semibold py-2" for="docDni">DNI</label>
+
+        <input type="radio" class="btn-check" name="docType" id="docCe">
+        <label class="btn btn-outline-custom fw-semibold py-2" for="docCe">CE</label>
+      </div>
+    </div>
+
+    <form asp-controller="Auth" asp-action="Login" method="post">
+
+      <div class="mb-3 text-start">
+        <label asp-for="Usuario" class="form-label text-dark fw-medium mb-1" style="font-size: 0.9rem;">Usuario</label>
+        <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-secondary">
+                    <i class="bi bi-person"></i>
+                </span>
+          <input asp-for="Usuario" type="text" class="form-control py-2 border-start-0 ps-0" style="font-size: 0.9rem;" placeholder="Ingresar usuario" />
+        </div>
+        <span asp-validation-for="Usuario"></span>
+      </div>
+
+      <div class="mb-3 text-start">
+        <label asp-for="Password" class="form-label text-dark fw-medium mb-1" style="font-size: 0.9rem;">Contraseña</label>
+        <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-secondary">
+                    <i class="bi bi-lock"></i>
+                </span>
+          <input asp-for="Password" type="password" class="form-control py-2 border-start-0 border-end-0 px-0" style="font-size: 0.9rem;" placeholder="Ingresar contraseña" />
+          <button class="btn btn-outline-secondary bg-white py-2 border-start-0 border text-secondary border-opacity-25" style="border-color: #dee2e6 !important;" type="button" id="togglePassword">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+        <span asp-validation-for="Password"></span>
+      </div>
+
+      <div class="mb-4 mt-2 text-start">
+        <a href="#" class="text-decoration-none" style="color: #3b82f6; font-weight: 500; font-size: 0.85rem;">¿Olvidó su contraseña?</a>
+      </div>
+
+      <div class="d-grid mt-3 mb-2">
+        <button type="submit" class="btn btn-ingresar fw-semibold py-2" style="font-size: 1rem; border-radius: 0.4rem;">Ingresar</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="card border-0 mt-3 p-3 bg-white d-flex flex-row align-items-center justify-content-center shadow-sm" style="max-width: 376px; width: 100%; border-radius: 0.8rem;">
+    <img src="~/images/soporte.webp" alt="Soporte" style="width: 40px; height: auto;" class="me-3" />
+    <span class="text-dark lh-sm text-start" style="font-size: 0.85rem;">
+        ¿Necesita ayuda?, <a href="#" class="text-decoration-none" style="color: #3b82f6; font-weight: 300;">contacte con el<br/>área de soporte.</a>
+    </span>
+  </div>
+</div>
+
+@if(isSessionExpired)
+{
+
+<div id="sessionToast" class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+  <div class="alert bg-white border border-primary border-2 border-start-0 border-end-0 border-top-0 border-bottom-primary d-flex align-items-center shadow p-3 rounded-2" role="alert" style="border-bottom: 4px solid #0d6efd !important; min-width: 320px;">
+    <i class="bi bi-info-circle-fill text-primary fs-4 me-3"></i>
+    <div class="small fw-medium">
+      Su sesión ha expirado debido a inactividad. Por favor,
+      inicie sesión nuevamente.
+    </div>
+  </div>
+</div>
+}
+
+@section Scripts {
+<script>
+  document.getElementById('togglePassword').addEventListener('click', function() {
+    var pwdInput = document.getElementById('Password');
+    var icon = this.querySelector('i');
+    if(pwdInput.type === 'password') {
+      pwdInput.type = 'text';
+      icon.classList.replace('bi-eye', 'bi-eye-slash');
+    } else {
+      pwdInput.type = 'password';
+      icon.classList.replace('bi-eye-slash', 'bi-eye');
+    }
+});
+
+  const sessionToast = document.getElementById('sessionToast');
+  if (sessionToast) {
+    setTimeout(() => {
+      sessionToast.style.transition = "opacity 0.6s ease";
+      sessionToast.style.opacity = "0";
+      setTimeout(() => { sessionToast.remove(); }, 600);
+    }, 4000);
+  }
+</script>
+}

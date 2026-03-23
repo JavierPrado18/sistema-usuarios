@@ -1,0 +1,25 @@
+@{
+    Layout = "_LayoutAuth";
+    ViewData["Title"] = "Cuenta Bloqueada";
+    ViewData["BackgroundImage"] = "/images/fondo2.webp";
+}
+
+<div class="w-100 d-flex flex-column align-items-center justify-content-center" style="margin-bottom: 200px;">
+    
+    <div class="card border-0 p-4 p-md-5 bg-white text-center shadow-sm" style="max-width: 376px; width: 100%; border-radius: 0.8rem;">
+        
+        <div class="d-flex justify-content-center mb-4">
+            <img src="~/images/soporte.webp" alt="Soporte" style="width: 100px; height: auto;" />
+        </div>
+        
+        <h4 class="fw-bold mb-3" style="color: #212529; font-size: 1.4rem;">
+            Cuenta bloqueada<br/>temporalmente
+        </h4>
+        
+        <p class="text-muted mb-0 px-md-2" style="font-size: 0.95rem; line-height: 1.6;">
+            Has excedido el número máximo de intentos fallidos (5). Por seguridad, tu cuenta ha sido bloqueada durante 15 minutos. Intenta nuevamente más tarde.
+        </p>
+
+    </div>
+
+</div>

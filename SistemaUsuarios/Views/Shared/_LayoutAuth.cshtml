@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SistemaUsuarios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Fonts -->
+    <link href="https://fonts.cdnfonts.com/css/qanelas" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+    <style>
+        body, html {
+            height: 100%;
+        }
+        .ceplan-auth-bg {
+            background-color: #f8f9fa; 
+            position: relative;
+            z-index: 1;
+        }
+
+        .ceplan-auth-bg::before {
+            content: "";
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-image: url('@(ViewData["BackgroundImage"] ?? "/images/fondo.webp")');
+            background-size: 100vw auto; 
+            background-position: left bottom;
+            background-repeat: no-repeat;
+            z-index: -1;
+            -webkit-mask-image: none;
+            mask-image: none;
+        }
+
+        @@media (max-width: 992px) {
+            .ceplan-auth-bg::before {
+                height: 50vh; 
+                background-size: cover; 
+                -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+                mask-image: linear-gradient(to bottom, transparent 0%, black 20%);
+            }
+        }
+        .ceplan-red {
+            background-color: #a42125 !important;
+        }
+    </style>
+</head>
+<body class="d-flex flex-column h-100 ceplan-auth-bg">
+    
+    <header class="ceplan-red py-2 px-4 d-flex justify-content-between align-items-center text-white" style="height: 60px;">
+        <img src="/images/ceplan.webp" alt="CEPLAN" style="height: 40px; object-fit: contain;" />
+        <i class="bi bi-question fs-4"></i>
+    </header>
+    <main class="flex-grow-1 d-flex align-items-center justify-content-center">
+        @RenderBody()
+    </main>
+
+    <partial name="_AuthFooter" />
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

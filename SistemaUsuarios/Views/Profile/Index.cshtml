@@ -1,0 +1,205 @@
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Perfil de usuario";
+}
+
+
+<div class="card shadow-sm border-0 rounded-3 p-4 p-md-5 bg-white">
+    
+    <div class="d-flex align-items-center mb-5 mt-2 ">
+        <!-- Avatar -->
+        <div class="rounded-circle flex-shrink-0 position-relative" style="width: 128px; height: 128px; background-color: #d5e4ff; margin-right: 2.5rem; overflow: hidden;">
+            <img src="/images/user.webp" alt="Foto de Perfil" class="position-absolute" style="width: 76%; height: auto; bottom: -8px; left: 50%; transform: translateX(-50%);" />
+        </div>
+        
+        <div class="ms-2">
+            <div class="d-flex align-items-center mb-2">
+                <h3 class="fw-bold mb-0 me-3" style="font-size: 1.65rem; color: #1e2227;">Mendoza Quispe, July Camila</h3>
+                <span class="badge px-3 py-1 fw-medium" style="background-color: #e5f6ee; color: #19804b; font-size: 0.85rem; border-radius: 6px;">Activo</span>
+            </div>
+            <div class="mb-2" style="font-size: 1.15rem; color: #5a626a;">Administrador de Recursos</div>
+            <div style="font-size: 1.1rem; color: #5a626a;">011 Ministerio de Salud</div>
+        </div>
+    </div>
+
+    <!-- Tabs -->
+    <ul class="nav nav-tabs mb-4 fw-medium border-bottom-2" id="profileTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active fw-bold text-primary border-0 border-bottom border-primary border-2 px-1 me-4 pb-3" id="basic-tab" data-bs-toggle="tab" data-bs-target="#basic" type="button" role="tab" style="background: transparent;">Información básica</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-muted border-0 px-1 me-4 pb-3" id="responsibilities-tab" data-bs-toggle="tab" data-bs-target="#responsibilities" type="button" role="tab" style="background: transparent;">Responsabilidades</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link text-muted border-0 px-1 pb-3" id="history-tab" data-bs-toggle="tab" data-bs-target="#history" type="button" role="tab" style="background: transparent;">Historial de responsabilidades</button>
+        </li>
+    </ul>
+
+    <div class="tab-content" id="profileTabContent">
+
+        <div class="tab-pane fade show active" id="basic" role="tabpanel">
+            <div class="row g-4 pt-2">
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Nombres</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="July Camila" readonly>
+                </div>
+            
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Primer Apellido</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="Mendoza" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Segundo Apellido</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="Quispe" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Tipo de Documento de Identidad</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="DNI" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Nº de Documento de Identidad</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="07079879" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Fecha de nacimiento</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="15 / 04 / 1944" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Nacionalidad</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="Peruana" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Sexo</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="Femenino" readonly>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Correo electrónico principal</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 text-dark border-end-0" value="test@minsa.gob.pe" readonly>
+                        <span class="input-group-text bg-light border-0 text-primary px-3">
+                            <i class="bi bi-pencil" role="button" title="Editar"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Correo electrónico secundario <span class="text-muted fw-normal">(Opcional)</span></label>
+                    <input type="text" class="form-control bg-white text-dark shadow-sm">
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Teléfono Móvil</label>
+                    <div class="input-group">
+                        <input type="text" class="form-control bg-light border-0 text-dark border-end-0" value="+51 999 999 999" readonly>
+                        <span class="input-group-text bg-light border-0 text-primary px-3">
+                            <i class="bi bi-pencil" role="button" title="Editar"></i>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Teléfono secundario <span class="text-muted fw-normal">(Opcional)</span></label>
+                    <div class="input-group shadow-sm rounded">
+                        <select class="form-select bg-light text-muted border-end-0" style="max-width: 110px;">
+                            <option selected>Tipo</option>
+                            <option value="1">Celular</option>
+                            <option value="2">Fijo</option>
+                        </select>
+                        <input type="text" class="form-control bg-white text-dark border-start-0">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Tipo de Contratación</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="CAS" readonly>
+                </div>
+                
+                <div class="col-md-4">
+                    <label class="form-label small fw-medium text-secondary mb-1">Fecha de contratación</label>
+                    <input type="text" class="form-control bg-light border-0 text-dark" value="09 / 03 / 2015" readonly>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="tab-pane fade" id="responsibilities" role="tabpanel">
+            <p class="mt-3 text-muted">Contenido de responsabilidades...</p>
+        </div>
+
+        <div class="tab-pane fade" id="history" role="tabpanel">
+            <p class="mt-3 text-muted">Historial de responsabilidades...</p>
+        </div>
+    </div>
+</div>
+
+@section Modals {
+  <div class="modal fade" id="sessionModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered modal-lg"> <div class="modal-content border-0" style="border-radius: 1rem;">
+        <div class="modal-body p-5">
+          <div class="d-flex align-items-center">
+            <div class="me-4">
+              <i class="bi bi-exclamation-triangle-fill text-warning" style="font-size: 3rem;"></i>
+            </div>
+            <div class="flex-grow-1">
+              <h4 class="fw-bold text-dark mb-2" style="font-size: 1.25rem;">Su sesión está a punto de expirar</h4>
+              <p class="text-secondary mb-0" style="font-size: 0.9rem;">
+                Por seguridad, su sesión expirará en <strong id="timerNumber" class="text-dark">49</strong> segundos. 
+                Para continuar, seleccione "Extender sesión".
+              </p>
+            </div>
+            <button type="button" class="btn-close align-self-start" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="d-flex justify-content-end mt-4">
+            <button type="button" class="btn fw-semibold px-4 py-2" 
+                    style="background-color: #D48C00; color: white; border-radius: 0.5rem;" 
+                    data-bs-dismiss="modal">
+              Extender sesión
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+}
+
+@section Scripts {
+  <script>
+        // Configuración
+        let secondsLeft = 10; 
+        let countdownInterval;
+
+        setTimeout(() => {
+            const modalElement = document.getElementById('sessionModal');
+            const myModal = new bootstrap.Modal(modalElement);
+            myModal.show();
+
+            startCountdown();
+        }, 5000);
+
+        function startCountdown() {
+            const timerDisplay = document.getElementById('timerNumber');
+            
+            countdownInterval = setInterval(() => {
+                secondsLeft--;
+                timerDisplay.innerText = secondsLeft;
+
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.href = '/Auth/Login?expired=true';
+                }
+            }, 1000); 
+        }
+
+        document.getElementById('sessionModal').addEventListener('hidden.bs.modal', function () {
+            clearInterval(countdownInterval);
+            secondsLeft = 10; 
+        });
+    </script>
+}
